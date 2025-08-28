@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+        , initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title></title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favico.png" type="image/x-icon">
+
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Thin.ttf') format('truetype');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ThinItalic.ttf') format('truetype');
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraLight.ttf') format('truetype');
+            font-weight: 200;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraLightItalic.ttf') format('truetype');
+            font-weight: 200;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-LightItalic.ttf') format('truetype');
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Italic.ttf') format('truetype');
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-MediumItalic.ttf') format('truetype');
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-SemiBoldItalic.ttf') format('truetype');
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-BoldItalic.ttf') format('truetype');
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraBold.ttf') format('truetype');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraBoldItalic.ttf') format('truetype');
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-BlackItalic.ttf') format('truetype');
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        section {
+            overflow: hidden;
+        }
+
+        /* Add this at the start of your style section */
+        [data-aos] {
+            overflow-x: hidden;
+            pointer-events: none;
+        }
+
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+
+        [data-aos="fade-left"] {
+            transform: translateX(0) !important;
+        }
+
+        [data-aos="fade-right"] {
+            transform: translateX(0) !important;
+        }
+
+        h2,
+        h4,
+        p {
+            overflow: hidden;
+        }
+
+        img {
+            overflow: hidden;
+        }
+
+
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .logo-container {
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .logo-container img {
+            width: 200px;
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .spinner {
+            border: 6px solid #ddd;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .carousel-text,
+        .carousel-image {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-text.active,
+        .carousel-image.active {
+            display: block;
+            opacity: 1;
+        }
+
+
+
+        .carousel-image {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+        }
+
+        .carousel-slide {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .dot.active {
+            opacity: 1;
+        }
+
+        ::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgb(31, 42, 54);
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #deb062;
+            border-radius: 10px;
+            border: 2px solid rgb(31, 42, 54);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #cda052;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+    <div id="preloader">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/artventurebg.png" alt="Stavat Artventure logo">
+            </a>
+            <div class="loading-text">Loading your experience...</div>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="fixed top-0 left-0 right-0 z-50 w-full bg-white">
+        <div class="flex items-center justify-between h-[8vh] bg-[rgb(31,42,54)] px-8 hidden lg:flex">
+            <div class="flex items-center space-x-8">
+                <a href="https://www.facebook.com/share/16BhpJNBvy/" class="text-white hover:text-[#ffbd59]"><img
+                        src="images/icons8-instagram-48.png" class="w-10 h-10" alt="facebook icon"></a>
+                <a href="https://www.instagram.com/digital_3d_wall_prints?igsh=cXB0ZHMxb2J2MnFu"
+                    class="text-white hover:text-[#ffbd59]"><img src="images/icons8-facebook-48.png" class="w-10 h-10"
+                        alt="facebook icon"></a>
+                <a href="https://wa.me/916360619869" class="text-white hover:text-[#ffbd59]"><img
+                        src="images/icons8-whatsapp-48.png" class="w-10 h-10" alt="stavat whatsapp icon"></a>
+
+            </div>
+            <div class="flex items-center space-x-8">
+                <a href="tel:+911234567890" class="flex items-center text-white ">
+                    <img src="images/icons8-phone-48.png" class="w-8 h-8 mr-2" alt="phone icon" />
+                    +91 6360619869
+                </a>
+                <a href="mailto:support@stavat.in" class="flex items-center text-white ">
+                    <img src="images/icons8-mail-48.png" class="w-8 h-8 mr-2" alt="email icon" />
+                    support@stavat.in
+                </a>
+
+                <a href="/contact.html"
+                    class="bg-yellow-500  text-black px-6 py-3 font-bold text-white transition duration-300 h-[8vh] flex items-center justify-center">
+                    Get Quote
+                </a>
+            </div>
+        </div>
+        <div class="flex items-center justify-between h-[6vh] bg-[rgb(31,42,54)] px-4 lg:hidden">
+            <h2 class="text-white text-xs sm:text-sm flex-1 text-center">Transform Your Walls Into Works of Art</h2>
+            <a href="contact.html"
+                class="text-yellow-500 whitespace-nowrap text-xs sm:text-sm font-medium px-3 py-1 border border-yellow-500 rounded hover:bg-yellow-500 hover:text-white transition-colors">Get
+                Quote</a>
+        </div>
+        <nav class="bg-white h-[10vh] md:h-[15vh] p-4 shadow-lg shadow-gray-200">
+            <div class="container mx-auto flex flex-wrap lg:flex-row justify-between items-center lg:px-8 h-full">
+                <div class="lg:w-auto lg:flex-none flex justify-center lg:justify-start">
+                    <a href="index.html"><img src="images/artventurebg.png" alt="Stavat Artventure logo"></a>
+                </div>
+                <button class="lg:hidden text-black transform transition-transform duration-300"
+                    onclick="toggleMenu(this)">
+                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div id="menu"
+                    class="hidden w-full lg:w-[60%] z-[100] bg-[#fff] rounded-b-2xl lg:!flex lg:items-center justify-end lg:space-x-8 absolute top-[15vh] left-0 bg-white lg:bg-transparent lg:relative lg:top-0 p-4 shadow-lg lg:shadow-none transform transition-all duration-300 ease-in-out lg:!opacity-100 lg:!scale-100 opacity-0 scale-95">
+                    <div
+                        class="text-lg w-full lg:w-[70%] lg:flex lg:justify-around flex flex-col lg:flex-row items-center">
+                        <a href="/index.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">Home</a>
+                        <a href="/services.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">Services</a>
+                        <a href="/about.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">About</a>
+                        <a href="/contact.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+    <section class="bg-[#1e1e1e] py-[5%] mt-[16vh] md:mt-[21vh]" itemscope itemtype="http://schema.org/AboutPage">
+        <div class="w-[90%] mx-auto">
+            <div class="text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-delay="300">
+                <h2 class="text-2xl lg:text-4xl font-semibold text-white text-center">About US</h2>
+            </div>
+            <h2 class="text-center text-[#f7dd57] font-bold text-2xl lg:text-5xl mt-3 md:mt-5" itemprop="name"
+                data-aos="fade-up" data-aos-duration="300">Stavat Artventure</h2>
+            <h3 class="text-center text-white font-bold text-lg lg:text-4xl mt-3 md:mt-5 overflow-hidden"
+                itemprop="description" data-aos="fade-up" data-aos-duration="300">Our Journey, Vision And Mission</h3>
+        </div>
+        <div class="flex justify-center mt-[5%]">
+            <div class="video-container w-[90%] md:w-[70%] lg:w-[40%] mx-auto rounded-lg overflow-hidden shadow-xl"
+                data-aos="fade-up" data-aos-duration="400">
+                <video class="w-full h-full object-cover" src="images/stavat_artventure.mp4" autoplay loop muted
+                    playsinline itemprop="video"></video>
+            </div>
+        </div>
+        <div class="flex justify-center w-full mt-5">
+            <p class="text-center text-white text-sm md:text-xl px-4 md:w-[60%]" data-aos="fade-up"
+                data-aos-duration="500" itemprop="description">At <b>Stavat Artventure</b>, we are
+                At STAVAT, we believe that walls should do more than just stand—they should tell stories, inspire
+                creativity, and reflect the essence of those who inhabit the space. Founded with a passion for
+                transforming interiors into works of art, STAVAT specializes in printing custom images on walls and
+                other flat surfaces such as glass, PVC, and wood.</p>
+        </div>
+        <div class="bg-white rounded-tl-[1.5rem] rounded-bl-[1.5rem] rounded-br-[1.5rem] p-5 mt-[5%]">
+            <div class="flex justify-center flex-col items-center" data-aos="fade-up" data-aos-duration="800">
+                <h2 class="text-4xl font-semibold text-black text-center">Our story</h2>
+                <div class="mt-3 flex items-center justify-center">
+                    <div class="h-2 w-2 bg-gray-800 transform -skew-x-12"></div>
+                    <div class="h-2 w-32 bg-gray-800 -skew-x-12"></div>
+                    <div class="h-2 w-16 bg-yellow-500 skew-x-12"></div>
+                    <div class="h-2 w-2 bg-yellow-500 transform skew-x-12"></div>
+                </div>
+            </div>
+            <div class="relative flex flex-col lg:flex-row items-center justify-between gap-12 p-8 lg:p-16"
+                itemprop="mainContentOfPage">
+                <!-- Image Section -->
+                <div class="w-full lg:w-[45%]" data-aos="fade-right" data-aos-duration="800">
+                    <div
+                        class="relative overflow-hidden rounded-3xl shadow-2xl transform hover:-translate-y-2 transition-all duration-500">
+                        <img src="images/stavat founders.png" alt="Stavat Founders"
+                            class="w-full h-[400px] object-cover object-center transform hover:scale-105 transition-transform duration-500"
+                            itemprop="image">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/50 opacity-0 hover:opacity-100 transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section -->
+                <div class="w-full lg:w-[55%] space-y-8" data-aos="fade-left" data-aos-duration="800">
+                    <div
+                        class="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                        <p class="text-gray-800 text-base lg:text-xl leading-relaxed mb-8 font-light" itemprop="text">
+                            Our journey began with a simple idea: to merge innovation with artistry. We saw blank walls
+                            as an opportunity, a canvas waiting to be filled with personality, vision, and emotion. With
+                            cutting-edge technology and a keen eye for detail, we bring ideas to life—whether it's a
+                            breathtaking mural in a home, a striking brand statement in a commercial space, or an
+                            intricate design on a glass partition.
+                        </p>
+                        <div class="w-full h-[2px] bg-gradient-to-r from-yellow-500 via-gray-200 to-transparent my-8">
+                        </div>
+                        <p class="text-gray-800 text-base lg:text-xl leading-relaxed font-light" itemprop="text">
+                            STAVAT isn't just about printing; it's about creating an experience. Every project we
+                            undertake is a collaboration, ensuring that our clients' visions are at the heart of what we
+                            produce. We take pride in delivering high-quality, durable, and visually stunning results.
+                        </p>
+                    </div>
+                    <div class="flex justify-center lg:justify-start gap-4">
+                        <span class="inline-block w-12 h-2 bg-yellow-500 rounded-full"></span>
+                        <span class="inline-block w-6 h-2 bg-gray-800 rounded-full"></span>
+                        <span class="inline-block w-3 h-2 bg-gray-800 rounded-full"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <section id="contact" class="bg-[#1E1E1E] flex flex-col md:flex-row justify-between lg:items-center min-h-[60vh]"
+        itemscope itemtype="http://schema.org/ContactPage">
+        <div class="w-full lg:w-[50%] flex flex-col items-center justify-center p-4 lg:p-6 m-2 lg:m-4" itemscope
+            itemtype="http://schema.org/Organization">
+            <h4 class="text-white text-2xl lg:text-3xl font-bold mb-4 text-center lg:text-left" itemprop="name">Let's
+                redecorate ?</h4>
+            <p class="text-white text-lg lg:text-xl leading-relaxed tracking-wide mt-2 mb-6 text-center text-left px-4"
+                itemprop="description">
+                Time to bring in some new vibes!
+            </p>
+            <img src="images/contactus.jpeg" alt="" class="rounded-lg p-4 w-[350px] lg:w-[400px] h-80" itemprop="image">
+        </div>
+
+        <div class="w-full lg:w-[50%] flex flex-col items-center justify-center p-4">
+            <div class="bg-white p-4 lg:p-6 rounded-lg shadow-xl w-full lg:w-[70%] h-70 flex flex-col justify-center">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4 text-[#1E1E1E] text-center p-2 lg:p-4"
+                    itemprop="headline">
+                    Get in <span class="text-[#ffbd59]">Touch</span>
+                </h2>
+
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+                <form class="space-y-4 lg:space-y-6 px-2 lg:px-4" id="contactForm" onsubmit="handleSubmit(event)"
+                    itemscope itemtype="http://schema.org/ContactForm">
+                    <div class="relative mb-4 mt-3">
+                        <input type="text" id="full_name" name="full_name"
+                            class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                            placeholder="Full Name*" required itemprop="requiredField">
+                        <label for="full_name"
+                            class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                            Full Name*
+                        </label>
+                    </div>
+
+                    <div class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
+                        <div class="relative mb-4 w-full lg:w-1/2">
+                            <input type="email" id="email" name="email"
+                                class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                                placeholder="Email*" required itemprop="email">
+                            <label for="email"
+                                class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                                Email*
+                            </label>
+                        </div>
+                        <div class="relative mb-4 w-full lg:w-1/2">
+                            <input type="tel" id="phone" name="phone"
+                                class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                                placeholder="Phone Number*" required itemprop="telephone">
+                            <label for="phone"
+                                class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                                Phone Number*
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="relative mb-4">
+                        <textarea id="message" name="message" rows="2"
+                            class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                            placeholder="Message*" required itemprop="description"></textarea>
+                        <label for="message"
+                            class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">
+                            Message*
+                        </label>
+                    </div>
+
+                    <button type="submit" id="submitBtn"
+                        class="bg-[#ffbd59] text-white px-4 lg:px-6 py-2 rounded-full text-lg lg:text-xl transform translate-z-2 hover:translate-z-1 transition duration-300 mx-auto block w-full lg:w-auto"
+                        itemprop="submitButton">
+                        <span id="submitText">Submit</span>
+                        <div id="loader" class="hidden">
+                            <svg class="animate-spin h-5 w-5 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" aria-label="Loading">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                    stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                </form>
+
+                <script>
+                    async function handleSubmit(event) {
+                        event.preventDefault();
+
+                        // Get form elements
+                        const form = document.getElementById('contactForm');
+                        const submitBtn = document.getElementById('submitBtn');
+                        const submitText = document.getElementById('submitText');
+                        const loader = document.getElementById('loader');
+
+                        // Show loading state
+                        submitText.classList.add('hidden');
+                        loader.classList.remove('hidden');
+                        submitBtn.disabled = true;
+
+                        try {
+                            const formData = new FormData(form);
+                            const response = await fetch('php/contact.php', {
+                                method: 'POST',
+                                body: formData
+                            });
+
+                            const data = await response.json();
+
+                            if (data.success) {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: 'Your message has been sent successfully.',
+                                    icon: 'success',
+                                    confirmButtonColor: '#ffbd59'
+                                });
+                                form.reset();
+                            } else {
+                                throw new Error(data.message || 'Something went wrong');
+                            }
+                        } catch (error) {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: error.message || 'Failed to send message. Please try again.',
+                                icon: 'error',
+                                confirmButtonColor: '#ffbd59'
+                            });
+                        } finally {
+                            // Reset button state
+                            submitText.classList.remove('hidden');
+                            loader.classList.add('hidden');
+                            submitBtn.disabled = false;
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+    <section class="bg-[#1E1E1E] flex flex-col" id="footer" itemscope itemtype="http://schema.org/Organization">
+        <div
+            class="container mx-auto mt-5 w-[90%] lg:w-[80%] flex flex-col md:flex-row justify-between py-2 space-y-8 lg:space-y-0">
+            <!-- Logo and Social Section -->
+            <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
+                <img src="images/savat_logo_light.jpeg" itemprop="logo" class="w-[200px] lg:w-[250px] mb-4">
+                <h2 itemprop="slogan"
+                    class="text-xl lg:text-2xl font-bold text-white mt-2 text-center lg:text-left px-4 lg:px-0">
+                    Where Art Meets Technology
+                </h2>
+
+                <div class="flex space-x-6 mt-6 justify-center w-full">
+                    <a href="https://www.instagram.com/digital_3d_wall_prints?igsh=cXB0ZHMxb2J2MnFu" itemprop="sameAs"
+                        class="bg-gray-300 p-2 rounded-full" aria-label="Follow us on Instagram">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.334-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.281.058-2.418.27-3.29 1.142-.872.872-1.084 2.009-1.142 3.29-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.281.27 2.418 1.142 3.29.872.872 2.009 1.084 3.29 1.142 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.281-.058 2.418-.27 3.29-1.142.872-.872 1.084-2.009 1.142-3.29.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.281-.27-2.418-1.142-3.29-.872-.872-2.009-1.084-3.29-1.142-1.28-.058-1.688-.072-4.947-.072zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/16BhpJNBvy/" itemprop="sameAs"
+                        class="bg-gray-300 p-2 rounded-full" aria-label="Follow us on Facebook">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/stavat/" itemprop="sameAs"
+                        class="bg-gray-300 p-2 rounded-full" aria-label="Follow us on LinkedIn">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Companies Section -->
+            <nav class="w-full md:w-1/3 flex flex-col items-center" aria-label="Company Navigation">
+                <div class="flex flex-col">
+                    <h2 class="text-white text-xl font-bold mb-4 text-center lg:text-left">Quick Links</h2>
+                    <a href="/services.html"
+                        class="text-gray-300 hover:text-white mb-2 cursor-pointer text-center lg:text-left">Services</a>
+                    <a href="/about.html"
+                        class="text-gray-300 hover:text-white mb-2 cursor-pointer text-center lg:text-left">about us</a>
+                    <a href="/contact.html"
+                        class="text-gray-300 hover:text-white cursor-pointer text-center lg:text-left">Contact Us</a>
+                </div>
+            </nav>
+
+            <!-- Contact Section -->
+            <div class="w-full md:w-1/3 flex flex-col items-center">
+                <div class="flex flex-col" itemscope itemtype="http://schema.org/ContactPoint">
+                    <h2 class="text-white text-xl font-bold mb-4 text-center lg:text-left">Contact Us</h2>
+                    <p class="text-gray-300 mb-2 underline text-center lg:text-left">
+                        Phone: <a href="tel:+916360619869" itemprop="telephone">+91 6360619869</a> /
+                        <a href="tel:+916364212236" itemprop="telephone">+91 6364212236</a>
+                    </p>
+                    <p class="text-gray-300 mb-4 underline text-center lg:text-left">
+                        Email: <a href="mailto:support@stavat.in" itemprop="email">support@stavat.in</a>
+                    </p>
+                    <h2 class="text-white text-xl font-bold mb-4 text-center lg:text-left">Address</h2>
+                    <p class="text-gray-300 text-center lg:text-left" itemprop="address" itemscope
+                        itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="name">Stavat Artventure</span>
+                        <span itemprop="addressLocality">Bengaluru</span>,
+                        <span itemprop="addressRegion">Karnataka</span>,
+                        <span itemprop="postalCode">560060</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="w-full flex justify-around items-center bg-[#ffbd59] h-[6vh]">
+        <h4 class="text-[#1E1E1E] text-sm">©2025 stavat artventure all rights reserved</h4>
+        <nav class="flex items-center space-x-4 text-sm hidden lg:flex" aria-label="Footer Navigation">
+            <a href="#" title="Terms of Service - Spark Solutions">Terms of Service</a>
+            <a href="#" title="Privacy Policy - Spark Solutions">Privacy Policy</a>
+            <a href="#" title="Cookie Policy - Spark Solutions">Cookies</a>
+        </nav>
+    </footer>
+</body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        offset: 120,
+
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const preloader = document.getElementById('preloader');
+        const mediaElements = [...document.images, ...document.querySelectorAll('video')];
+        let loadedCount = 0;
+
+        if (mediaElements.length === 0) {
+            hidePreloader();
+        }
+
+        mediaElements.forEach(el => {
+            if (el.tagName === 'IMG') {
+                if (el.complete) {
+                    checkLoaded();
+                } else {
+                    el.addEventListener('load', checkLoaded);
+                    el.addEventListener('error', checkLoaded);
+                }
+            } else if (el.tagName === 'VIDEO') {
+                if (el.readyState >= 3) {
+                    checkLoaded();
+                } else {
+                    el.addEventListener('loadeddata', checkLoaded);
+                    el.addEventListener('error', checkLoaded);
+                }
+            }
+        });
+
+        function checkLoaded() {
+            loadedCount++;
+            if (loadedCount === mediaElements.length) {
+                hidePreloader();
+            }
+        }
+
+        function hidePreloader() {
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); // sync with CSS transition
+        }
+    });
+
+
+    function toggleMenu(button) {
+        const menu = document.getElementById('menu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        menu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+
+        // Animation for menu opening/closing
+        if (!menu.classList.contains('hidden')) {
+            menu.style.opacity = '1';
+            menu.style.transform = 'scale(1)';
+        } else {
+            menu.style.opacity = '0';
+            menu.style.transform = 'scale(0.95)';
+        }
+
+        // Rotate button animation
+        button.classList.toggle('rotate-180');
+    }
+
+</script>
+
+</html>

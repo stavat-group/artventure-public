@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+        , initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title></title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favico.png" type="image/x-icon">
+
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Thin.ttf') format('truetype');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ThinItalic.ttf') format('truetype');
+            font-weight: 100;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraLight.ttf') format('truetype');
+            font-weight: 200;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraLightItalic.ttf') format('truetype');
+            font-weight: 200;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-LightItalic.ttf') format('truetype');
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Italic.ttf') format('truetype');
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-MediumItalic.ttf') format('truetype');
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-SemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-SemiBoldItalic.ttf') format('truetype');
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-BoldItalic.ttf') format('truetype');
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraBold.ttf') format('truetype');
+            font-weight: 800;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-ExtraBoldItalic.ttf') format('truetype');
+            font-weight: 800;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-Black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('./font/Poppins-BlackItalic.ttf') format('truetype');
+            font-weight: 900;
+            font-style: italic;
+        }
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        section {
+            overflow: hidden;
+        }
+
+        /* Add this at the start of your style section */
+        [data-aos] {
+            overflow-x: hidden;
+            pointer-events: none;
+        }
+
+        [data-aos].aos-animate {
+            pointer-events: auto;
+        }
+
+        [data-aos="fade-left"] {
+            transform: translateX(0) !important;
+        }
+
+        [data-aos="fade-right"] {
+            transform: translateX(0) !important;
+        }
+
+        h2,
+        h4,
+        p {
+            overflow: hidden;
+        }
+
+        img {
+            overflow: hidden;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom right, #ffffff, #e0e0e0);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .logo-container {
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        .logo-container img {
+            width: 200px;
+            max-width: 80%;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .spinner {
+            border: 6px solid #ddd;
+            border-top: 6px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+
+        .carousel-text,
+        .carousel-image {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-text.active,
+        .carousel-image.active {
+            display: block;
+            opacity: 1;
+        }
+
+
+
+        .carousel-image {
+            width: 100%;
+            height: 70vh;
+            object-fit: cover;
+        }
+
+        .carousel-slide {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .dot.active {
+            opacity: 1;
+        }
+
+        ::-webkit-scrollbar {
+            width: 16px;
+            height: 16px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgb(31, 42, 54);
+
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #deb062;
+            border-radius: 10px;
+            border: 2px solid rgb(31, 42, 54);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #cda052;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+    <div id="preloader">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/artventurebg.png" alt="Stavat Artventure logo">
+            </a>
+            <div class="loading-text">Loading your experience...</div>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+
+    </div>
+    <div class="fixed top-0 left-0 right-0 z-50 w-full bg-white">
+            <div class="flex items-center justify-between h-[8vh] bg-[rgb(31,42,54)] px-8 hidden lg:flex">
+            <div class="flex items-center space-x-8">
+                <a href="https://www.facebook.com/share/16BhpJNBvy/" class="text-white hover:text-[#ffbd59]"><img
+                        src="images/icons8-instagram-48.png" class="w-10 h-10" alt="facebook icon"></a>
+                <a href="https://www.instagram.com/digital_3d_wall_prints?igsh=cXB0ZHMxb2J2MnFu"
+                    class="text-white hover:text-[#ffbd59]"><img src="images/icons8-facebook-48.png" class="w-10 h-10"
+                        alt="facebook icon"></a>
+                <a href="https://wa.me/916360619869" class="text-white hover:text-[#ffbd59]"><img
+                        src="images/icons8-whatsapp-48.png" class="w-10 h-10" alt="stavat whatsapp icon"></a>
+
+            </div>
+            <div class="flex items-center space-x-8">
+                <a href="tel:+911234567890" class="flex items-center text-white ">
+                    <img src="images/icons8-phone-48.png" class="w-8 h-8 mr-2" alt="phone icon" />
+                    +91 6360619869
+                </a>
+                <a href="mailto:support@stavat.in" class="flex items-center text-white ">
+                    <img src="images/icons8-mail-48.png" class="w-8 h-8 mr-2" alt="email icon" />
+                    support@stavat.in
+                </a>
+
+                <a href="/contact.html"
+                    class="bg-yellow-500  text-black px-6 py-3 font-bold text-white transition duration-300 h-[8vh] flex items-center justify-center">
+                    Get Quote
+                </a>
+            </div>
+        </div>
+        <div class="flex items-center justify-between h-[6vh] bg-[rgb(31,42,54)] px-4 lg:hidden">
+            <h2 class="text-white text-xs sm:text-sm flex-1 text-center">Transform Your Walls Into Works of Art</h2>
+            <a href="contact.html"
+                class="text-yellow-500 whitespace-nowrap text-xs sm:text-sm font-medium px-3 py-1 border border-yellow-500 rounded hover:bg-yellow-500 hover:text-white transition-colors">Get
+                Quote</a>
+        </div>
+        <nav class="bg-white h-[10vh] md:h-[15vh] p-4 shadow-lg shadow-gray-200">
+            <div class="container mx-auto flex flex-wrap lg:flex-row justify-between items-center lg:px-8 h-full">
+                <div class="lg:w-auto lg:flex-none flex justify-center lg:justify-start">
+                   <a href="index.html"> <img src="images/artventurebg.png" alt="Stavat Artventure logo"></a>
+                </div>
+                <button class="lg:hidden text-black transform transition-transform duration-300"
+                    onclick="toggleMenu(this)">
+                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div id="menu"
+                    class="hidden w-full lg:w-[60%] z-[100] bg-[#fff] rounded-b-2xl lg:!flex lg:items-center justify-end lg:space-x-8 absolute top-[15vh] left-0 bg-white lg:bg-transparent lg:relative lg:top-0 p-4 shadow-lg lg:shadow-none transform transition-all duration-300 ease-in-out lg:!opacity-100 lg:!scale-100 opacity-0 scale-95">
+                    <div
+                        class="text-lg w-full lg:w-[70%] lg:flex lg:justify-around flex flex-col lg:flex-row items-center">
+                        <a href="/index.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">Home</a>
+                        <a href="/services.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">Services</a>
+                        <a href="/about.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">About</a>
+                        <a href="/contact.html"
+                            class="block w-full text-center py-2 border-b lg:border-none lg:inline-block lg:mt-0 text-[#1E1E1E] hover:text-[#ed4845] cursor-pointer text-sm md:text-base lg:text-lg transition-transform duration-300 hover:scale-105">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <section class="mt-[16vh] md:mt-[21vh]">
+        <div class="h-[30vh] flex items-center justify-center lg:h-[30vh] px-2"
+            style="background-image: url(images/quote_image.png);background-position: center;background-repeat: no-repeat;background-size: cover;">
+            <h1 class="text-center text-xl md:text-3xl font-bold text-[#1E1E1E] text-white lg:w-[550px]"> "Want to turn
+                your wall into a masterpiece? STAVAT is just a call away!"</h1>
+        </div>
+
+        <div class="text-center flex flex-col items-center justify-center mt-5 py-5" data-aos="fade-up"
+            data-aos-duration="600">
+            <h2 class="text-4xl font-semibold text-black text-center">Get Quote</h2>
+            <div class="mt-3 flex items-center justify-center">
+                <div class="h-2 w-2 bg-gray-800 transform -skew-x-12"></div>
+                <div class="h-2 w-28 bg-gray-800 -skew-x-12"></div>
+                <div class="h-2 w-16 bg-yellow-500 skew-x-12"></div>
+                <div class="h-2 w-2 bg-yellow-500 transform skew-x-12"></div>
+            </div>
+        </div>
+        <!-- HTML Structure -->
+        <section class="flex flex-col items-center mt-4 p-6" data-aos="fade-up" data-aos-duration="800">
+            <form id="quoteForm" class="bg-white rounded-xl shadow-2xl p-8 lg:p-12 w-full max-w-4xl mt-5">
+                <!-- Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-sm font-medium" id="progressText">Step 1 of 4</span>
+                        <span class="text-sm font-medium"><span id="progressPercentage">25</span>% Complete</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-yellow-500 h-2.5 rounded-full" id="progressBar" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- Step 1 -->
+                <div id="step1" class="step-content">
+                    <h3 class="text-2xl font-bold text-center mb-8">Select Property Type</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <label
+                            class="flex items-center p-6 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-yellow-500 transition-all duration-300 group">
+                            <input type="radio" name="propertyType" value="residential" class="peer hidden">
+                            <div
+                                class="w-6 h-6 border-2 border-gray-400 rounded-full mr-4 flex items-center justify-center group-hover:border-yellow-500 peer-checked:bg-yellow-500 peer-checked:border-yellow-500">
+                                <div class="w-3 h-3 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+                            </div>
+                            <span
+                                class="text-lg group-hover:text-yellow-500 peer-checked:text-yellow-500">Residential</span>
+                        </label>
+                        <label
+                            class="flex items-center p-6 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-yellow-500 transition-all duration-300 group">
+                            <input type="radio" name="propertyType" value="commercial" class="peer hidden">
+                            <div
+                                class="w-6 h-6 border-2 border-gray-400 rounded-full mr-4 flex items-center justify-center group-hover:border-yellow-500 peer-checked:bg-yellow-500 peer-checked:border-yellow-500">
+                                <div class="w-3 h-3 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+                            </div>
+                            <span
+                                class="text-lg group-hover:text-yellow-500 peer-checked:text-yellow-500">Commercial</span>
+                        </label>
+                    </div>
+                    <div class="mb-8">
+                        <label class="block mb-3 text-lg font-medium">Number of Walls:</label>
+                        <input type="number" id="wallCount" min="1" max="10" value="1"
+                            class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
+                            required>
+                        <p id="wallCountError" class="text-red-500 text-sm mt-2 hidden">Please enter between 1-10 walls
+                        </p>
+                        <p id="wallCountWarning" class="text-yellow-600 text-sm mt-2 hidden">For projects with more than
+                            10 walls, we recommend contacting us directly.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div id="step2" class="step-content hidden">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Wall Dimensions</h3>
+                    <div class="bg-yellow-50 p-4 rounded-lg mb-6">
+                        <p class="text-sm">👋 Need help with measurements? Click below:</p>
+                        <a href="https://wa.me/916360619869?text=Hi, I need help with wall measurements"
+                            class="inline-flex items-center bg-green-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-green-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Get Help with Measurements
+                        </a>
+                    </div>
+                    <div id="wallDimensions" class="space-y-4"></div>
+                    <div id="totalArea" class="mt-6 p-4 bg-gray-50 rounded-lg text-center">
+                        <span class="text-xl font-bold">Total Area: <span id="totalAreaValue">0</span> sq ft</span>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div id="step3" class="step-content hidden">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Your Details</h3>
+                    <div id="contactForm" class="space-y-6">
+                        <div>
+                            <label class="block mb-2 text-lg font-medium">Name</label>
+                            <input type="text" id="name"
+                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
+                                required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-lg font-medium">Email</label>
+                            <input type="email" id="email"
+                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
+                                required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-lg font-medium">Phone</label>
+                            <input type="tel" id="phone"
+                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
+                                required>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-lg font-medium">Address</label>
+                            <textarea id="address" rows="3"
+                                class="w-full p-4 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
+                                required></textarea>
+                        </div>
+                        <div class="flex flex-col md:flex-row gap-4 mt-6">
+                            <button type="button" id="whatsappSubmit"
+                                class="flex-1 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                                </svg>
+                                Submit via WhatsApp
+                            </button>
+                            <button type="button" id="databaseSubmit"
+                                class="flex-1 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition-colors flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
+                                </svg>
+                                Submit and Get Quote
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div id="step4" class="step-content hidden">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Your Quotation</h3>
+                    <div id="quotationSummary" class="mt-8 bg-gray-50 p-6 rounded-lg">
+                        <h4 class="text-xl font-bold mb-4">Quotation Details</h4>
+                        <div id="quotationDetails" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between mt-8">
+                    <button type="button" id="prevBtn"
+                        class="hidden px-8 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors">Back</button>
+                    <button type="button" id="nextBtn"
+                        class="px-8 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors">Next</button>
+                </div>
+            </form>
+
+            <!-- Success Modal -->
+            <div id="successModal"
+                class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+                <div class="bg-white rounded-xl p-8 max-w-md w-full">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-500" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Quotation Submitted!</h3>
+                        <p class="text-gray-600 mb-6">Thank you for your interest. We'll contact you shortly.</p>
+                        <button id="closeModal"
+                            class="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors">Close</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            let currentStep = 1;
+            let totalSteps = 4;
+            let totalSqFt = 0;
+            let userDetails = {};
+
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelector('input[name="propertyType"][value="residential"]').checked = true;
+                document.getElementById('wallCount').value = 1;
+
+                document.getElementById('nextBtn').addEventListener('click', nextStep);
+                document.getElementById('prevBtn').addEventListener('click', prevStep);
+                document.getElementById('whatsappSubmit').addEventListener('click', submitViaWhatsApp);
+                document.getElementById('databaseSubmit').addEventListener('click', submitToDatabase);
+
+                const propertyTypes = document.querySelectorAll('input[name="propertyType"]');
+                propertyTypes.forEach(type => {
+                    type.addEventListener('change', handlePropertyTypeChange);
+                });
+
+                handlePropertyTypeChange(document.querySelector('input[name="propertyType"]:checked'));
+            });
+
+            function updateProgressBar() {
+                const percent = Math.round((currentStep / totalSteps) * 100);
+                document.getElementById('progressBar').style.width = `${percent}%`;
+                document.getElementById('progressPercentage').textContent = percent;
+                document.getElementById('progressText').textContent = `Step ${currentStep} of ${totalSteps}`;
+            }
+
+            function nextStep() {
+                if (!validateCurrentStep()) {
+                    return;
+                }
+
+                document.getElementById(`step${currentStep}`).classList.add('hidden');
+                currentStep++;
+
+                if (currentStep === 2) {
+                    createWallDimensionsFields();
+                }
+
+                document.getElementById(`step${currentStep}`).classList.remove('hidden');
+                document.getElementById('prevBtn').classList.remove('hidden');
+                if (currentStep === 3) {
+                    document.getElementById('nextBtn').classList.add('hidden');
+                } else if (currentStep === totalSteps) {
+                    document.getElementById('nextBtn').classList.add('hidden');
+                    calculateQuotation();
+                }
+
+                updateProgressBar();
+            }
+
+            function prevStep() {
+                document.getElementById(`step${currentStep}`).classList.add('hidden');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.remove('hidden');
+
+                if (currentStep === 1) {
+                    document.getElementById('prevBtn').classList.add('hidden');
+                }
+                document.getElementById('nextBtn').classList.remove('hidden');
+                updateProgressBar();
+            }
+
+            function validateCurrentStep() {
+                let isValid = true;
+
+                if (currentStep === 1) {
+                    const propertyType = document.querySelector('input[name="propertyType"]:checked');
+                    if (!propertyType) {
+                        alert('Please select a property type');
+                        isValid = false;
+                    } else if (!validateWallCount()) {
+                        isValid = false;
+                    }
+                } else if (currentStep === 2) {
+                    const widths = document.querySelectorAll('.wall-width');
+                    const heights = document.querySelectorAll('.wall-height');
+
+                    for (let i = 0; i < widths.length; i++) {
+                        if (!widths[i].value || !heights[i].value || parseFloat(widths[i].value) <= 0 || parseFloat(heights[i].value) <= 0) {
+                            alert(`Please enter valid dimensions for Wall ${i + 1} (greater than 0)`);
+                            widths[i].focus();
+                            isValid = false;
+                            break;
+                        }
+                    }
+                    if (isValid) {
+                        calculateArea();
+                    }
+                } else if (currentStep === 3) {
+                    const name = document.getElementById('name');
+                    const email = document.getElementById('email');
+                    const phone = document.getElementById('phone');
+                    const address = document.getElementById('address');
+
+                    if (!name.value.trim()) {
+                        alert('Please enter your name');
+                        name.focus();
+                        isValid = false;
+                    } else if (!email.value.trim()) {
+                        alert('Please enter your email');
+                        email.focus();
+                        isValid = false;
+                    } else if (!phone.value.trim()) {
+                        alert('Please enter your phone number');
+                        phone.focus();
+                        isValid = false;
+                    } else if (!address.value.trim()) {
+                        alert('Please enter your address');
+                        address.focus();
+                        isValid = false;
+                    } else {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(email.value)) {
+                            alert('Please enter a valid email address');
+                            email.focus();
+                            isValid = false;
+                        }
+
+                        const phoneRegex = /^\d{10}$/;
+                        if (!phoneRegex.test(phone.value.replace(/[^0-9]/g, ''))) {
+                            alert('Please enter a valid 10-digit phone number');
+                            phone.focus();
+                            isValid = false;
+                        }
+                    }
+                    if (isValid) {
+                        userDetails = {
+                            name: name.value.trim(),
+                            email: email.value.trim(),
+                            phone: phone.value.trim(),
+                            address: address.value.trim()
+                        };
+                    }
+                }
+
+                return isValid;
+            }
+
+            function handlePropertyTypeChange(event) {
+                const wallCountInput = document.getElementById('wallCount');
+                const isCommercial = event.target.value === 'commercial';
+                wallCountInput.min = isCommercial ? '4' : '1';
+
+                const currentValue = parseInt(wallCountInput.value);
+                if (isCommercial && currentValue < 4) {
+                    wallCountInput.value = 4;
+                } else if (!isCommercial && currentValue < 1) {
+                    wallCountInput.value = 1;
+                }
+
+                validateWallCount();
+            }
+
+            function validateWallCount() {
+                const wallCountInput = document.getElementById('wallCount');
+                const wallCount = parseInt(wallCountInput.value);
+                const propertyType = document.querySelector('input[name="propertyType"]:checked')?.value;
+                const error = document.getElementById('wallCountError');
+                const warning = document.getElementById('wallCountWarning');
+
+                error.classList.add('hidden');
+                warning.classList.add('hidden');
+
+                if (!propertyType) {
+                    return false;
+                }
+
+                if (!wallCount || isNaN(wallCount)) {
+                    error.textContent = 'Please enter a valid number of walls';
+                    error.classList.remove('hidden');
+                    wallCountInput.focus();
+                    return false;
+                }
+
+                const minWalls = propertyType === 'commercial' ? 4 : 1;
+                if (wallCount < minWalls) {
+                    error.textContent = `${propertyType.charAt(0).toUpperCase() + propertyType.slice(1)} properties require at least ${minWalls} wall${minWalls > 1 ? 's' : ''}`;
+                    error.classList.remove('hidden');
+                    wallCountInput.value = minWalls;
+                    wallCountInput.focus();
+                    return false;
+                }
+
+                if (wallCount > 10) {
+                    warning.classList.remove('hidden');
+                    wallCountInput.value = 10;
+                    wallCountInput.focus();
+                    return false;
+                }
+
+                return true;
+            }
+
+            function createWallDimensionsFields() {
+                const container = document.getElementById('wallDimensions');
+                container.innerHTML = '';
+                const wallCount = parseInt(document.getElementById('wallCount').value);
+
+                for (let i = 1; i <= Math.min(wallCount, 10); i++) {
+                    container.innerHTML += `
+                        <div class="flex items-center space-x-4">
+                            <span class="font-medium text-lg">Wall ${i}:</span>
+                            <input type="number" class="wall-width w-24 p-2 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" step="0.01" min="0.1" placeholder="Width" required>
+                            <span>x</span>
+                            <input type="number" class="wall-height w-24 p-2 border-2 border-gray-200 rounded-lg focus:border-yellow-500 focus:outline-none" step="0.01" min="0.1" placeholder="Height" required>
+                            <span>ft</span>
+                        </div>
+                    `;
+                }
+
+                const inputs = document.querySelectorAll('.wall-width, .wall-height');
+                inputs.forEach(input => input.addEventListener('input', calculateArea));
+            }
+
+            function calculateArea() {
+                const widths = document.querySelectorAll('.wall-width');
+                const heights = document.querySelectorAll('.wall-height');
+                let area = 0;
+
+                for (let i = 0; i < widths.length; i++) {
+                    const width = parseFloat(widths[i].value) || 0;
+                    const height = parseFloat(heights[i].value) || 0;
+                    area += width * height;
+                }
+
+                totalSqFt = parseFloat(area.toFixed(2));
+                document.getElementById('totalAreaValue').textContent = totalSqFt;
+                return totalSqFt;
+            }
+
+            function calculateQuotation() {
+                const propertyType = document.querySelector('input[name="propertyType"]:checked').value;
+                const wallCount = parseInt(document.getElementById('wallCount').value);
+                const baseRate = propertyType === 'residential' ? 350 : 320;
+                let discount = 0;
+
+                if (wallCount === 2) discount = 0.05;
+                else if (wallCount === 3) discount = 0.10;
+                else if (wallCount >= 4) discount = 0.15;
+
+                const subtotal = totalSqFt * baseRate;
+                const discountAmount = subtotal * discount;
+                const totalAmount = subtotal - discountAmount;
+
+                let detailsHTML = `
+                    <p><strong>Name:</strong> ${userDetails.name}</p>
+                    <p><strong>Email:</strong> ${userDetails.email}</p>
+                    <p><strong>Phone:</strong> ${userDetails.phone}</p>
+                    <p><strong>Address:</strong> ${userDetails.address}</p>
+                    <p><strong>Property Type:</strong> ${propertyType.charAt(0).toUpperCase() + propertyType.slice(1)}</p>
+                    <p><strong>Number of Walls:</strong> ${wallCount}</p>
+                    <p><strong>Total Area:</strong> ${totalSqFt} sq ft</p>
+                    <p><strong>Subtotal:</strong> ₹${subtotal.toLocaleString()}</p>
+                `;
+
+                if (discount > 0) {
+                    detailsHTML += `
+                        <p><strong>Discount (${(discount * 100)}%):</strong> -₹${discountAmount.toLocaleString()}</p>
+                    `;
+                }
+
+                detailsHTML += `
+                    <p class="text-xl font-bold mt-4">Total Amount: ₹${totalAmount.toLocaleString()}</p>
+                    <p class="text-sm text-gray-500 mt-2">*Final price may vary based on design complexity</p>
+                `;
+
+                if (propertyType === 'commercial') {
+                    detailsHTML += `
+                        <p class="text-green-600 mt-2">For more offers, contact us!</p>
+                        <a href="https://wa.me/916360619869?text=Hi, I'm interested in commercial wall art offers" class="inline-flex items-center bg-green-500 text-white px-4 py-2 rounded-lg mt-2 hover:bg-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Contact for Offers
+                        </a>
+                    `;
+                }
+
+                document.getElementById('quotationDetails').innerHTML = detailsHTML;
+            }
+
+            function submitViaWhatsApp() {
+                if (!validateCurrentStep()) {
+                    return;
+                }
+
+                const propertyType = document.querySelector('input[name="propertyType"]:checked').value;
+                const wallCount = document.getElementById('wallCount').value;
+
+                const message = `Hi, I'm ${userDetails.name} requesting a wall art quotation:%0A
+        Email: ${userDetails.email}%0A
+        Phone: ${userDetails.phone}%0A
+        Address: ${userDetails.address}%0A
+        Property Type: ${propertyType}%0A
+        Walls: ${wallCount}%0A
+        Total Area: ${totalSqFt} sq ft`;
+
+                window.location.href = `https://wa.me/916360619869?text=${encodeURIComponent(message)}`;
+            }
+
+            function submitToDatabase() {
+                if (!validateCurrentStep()) {
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('name', userDetails.name);
+                formData.append('email', userDetails.email);
+                formData.append('phone', userDetails.phone);
+                formData.append('address', userDetails.address);
+                formData.append('propertyType', document.querySelector('input[name="propertyType"]:checked').value);
+                formData.append('wallCount', document.getElementById('wallCount').value);
+                formData.append('totalArea', totalSqFt);
+
+                fetch('php/quote.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            document.getElementById('step3').classList.add('hidden');
+                            currentStep = 4;
+                            document.getElementById('step4').classList.remove('hidden');
+                            document.getElementById('prevBtn').classList.remove('hidden');
+                            document.getElementById('nextBtn').classList.add('hidden');
+                            calculateQuotation();
+                            updateProgressBar();
+                        } else {
+                            alert('Error submitting quotation: ' + (data.message || 'Unknown error'));
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting your quotation. Please try again.');
+                    });
+            }
+
+            function closeSuccessModal() {
+                document.getElementById('successModal').classList.add('hidden');
+                document.getElementById('quoteForm').reset();
+                currentStep = 1;
+                document.getElementById('step4').classList.add('hidden');
+                document.getElementById('step1').classList.remove('hidden');
+                document.getElementById('prevBtn').classList.add('hidden');
+                document.getElementById('nextBtn').classList.remove('hidden');
+                userDetails = {};
+                updateProgressBar();
+            }
+        </script>
+    </section>
+    <section id="contact px-3 " itemscope itemtype="http://schema.org/Organization"></section>
+    <div class="text-center flex flex-col items-center justify-center" data-aos="fade-up" data-aos-duration="600">
+        <h2 class="text-4xl font-semibold text-black text-center mt-[5%]">Contact Us</h2>
+        <div class="mt-3 flex items-center justify-center">
+            <div class="h-2 w-2 bg-gray-800 transform -skew-x-12"></div>
+            <div class="h-2 w-28 bg-gray-800 -skew-x-12"></div>
+            <div class="h-2 w-16 bg-yellow-500 skew-x-12"></div>
+            <div class="h-2 w-2 bg-yellow-500 transform skew-x-12"></div>
+        </div>
+    </div>
+    <div
+        class="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-3 gap-6 gap-[4rem] lg:mt-[10%] md:mt-[20%] mt-[20%] lg:w-[80%] mx-auto">
+        <div
+            class="bg-white shadow-[0_3px_9px_rgba(0,0,0,0.2),0_9px_10px_rgba(0,0,0,0.2),4px_0_6px_rgba(0,0,0,0.1),-4px_0_6px_rgba(0,0,0,0.1)] rounded-lg p-6 col-span-1 relative w-[300px] mx-auto hover:scale-110 transition duration-300 hover:bg-yellow-500 hover:border-[#1E1E1E] hover:border-[5px]">
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-[#1E1E1E] p-4 rounded-full">
+                <svg class="h-10 w-10 text-[#ffbd59]" fill="currentColor" viewBox="0 0 24 24" aria-label="Phone Icon">
+                    <path
+                        d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.11-.21c1.12.45 2.33.69 3.59.69.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C10.29 22 2 13.71 2 3.5 2 2.95 2.45 2.5 3 2.5H6.5c.55 0 1 .45 1 1 0 1.26.24 2.47.69 3.59.14.34.07.73-.21 1.11l-2.2 2.2z" />
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-center mt-10">Contact Number</h3>
+            <p class="text-center mt-2 text-lg" itemprop="telephone">+91 6360619869 / 6364212236</p>
+        </div>
+
+        <div
+            class="bg-white shadow-[0_3px_9px_rgba(0,0,0,0.2),0_9px_10px_rgba(0,0,0,0.2),4px_0_6px_rgba(0,0,0,0.1),-4px_0_6px_rgba(0,0,0,0.1)] rounded-lg p-6 col-span-1 relative w-[300px] mx-auto hover:scale-110 transition duration-300 hover:bg-yellow-500 hover:border-[#1E1E1E] hover:border-[5px]">
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-[#1E1E1E] p-4 rounded-full">
+                <svg class="h-10 w-10 text-[#ffbd59]" fill="currentColor" viewBox="0 0 24 24" aria-label="Email Icon">
+                    <path
+                        d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-center mt-10">Email Address</h3>
+            <p class="text-center mt-2 text-lg" itemprop="email">support@stavat.in</p>
+        </div>
+
+        <div
+            class="bg-white shadow-[0_3px_9px_rgba(0,0,0,0.2),0_9px_10px_rgba(0,0,0,0.2),4px_0_6px_rgba(0,0,0,0.1),-4px_0_6px_rgba(0,0,0,0.1)] rounded-lg p-6 col-span-1 relative w-[300px] mx-auto hover:scale-110 transition duration-300 hover:bg-yellow-500 hover:border-[#1E1E1E] hover:border-[5px]">
+            <div class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-[#1E1E1E] p-4 rounded-full">
+                <svg class="h-8 w-8 text-[#ffbd59]" fill="currentColor" viewBox="0 0 24 24" aria-label="Location Icon">
+                    <path
+                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-center mt-10">Office Address</h3>
+            <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <p class="text-center mt-2 text-lg">
+                    <span itemprop="streetAddress">Stavat Artventure</span>,
+                    <span itemprop="addressLocality">Bengaluru</span>,
+                    <span itemprop="addressRegion">Karnataka</span>,
+                    <span itemprop="postalCode">560060</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    </section>
+    <section id="contact">
+        <div class="container lg:w-[70%] md:w-[80%] w-[90%] mx-auto mt-[5%] py-[5%]" data-aos="fade-up"
+            data-aos-duration="600">
+            <div
+                class="bg-white block lg:flex rounded-lg justify-between shadow-[0_4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1),4px_0_6px_rgba(0,0,0,0.1),-4px_0_6px_rgba(0,0,0,0.1)]">
+                <div class="w-full lg:w-[60%] py-2">
+                    <h2 class="text-4xl font-bold text-center mt-10">Get In Touch
+                    </h2>
+                    <form class="space-y-6 w-[80%] mx-auto mt-10 py-[3%] lg:p-[5%]" id="contactForm1"
+                        onsubmit="handleSubmit(event)" itemscope itemtype="http://schema.org/ContactForm">
+                        <div class="relative mb-4 mt-3">
+                            <input type="text" id="full_name" name="name"
+                                class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                                placeholder="Full Name*" required>
+                            <label for="full_name"
+                                class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Full
+                                Name*</label>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="relative mb-4 w-1/2 mt-3">
+                                <input type="email" id="email" name="email"
+                                    class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                                    placeholder="Email*" required>
+                                <label for="email"
+                                    class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email*</label>
+                            </div>
+                            <div class="relative mb-4 w-1/2 mt-3">
+                                <input type="tel" id="phone" name="phone"
+                                    class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                                    placeholder="Phone Number*" required>
+                                <label for="phone"
+                                    class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Phone*</label>
+                            </div>
+                        </div>
+                        <div class="relative mb-4 mt-3">
+                            <textarea id="message" name="message" rows="2"
+                                class="peer w-full border-b-2 border-gray-300 focus:outline-none focus:border-[#ffbd59] placeholder-transparent px-2 py-2"
+                                placeholder="Message*" required></textarea>
+                            <label for="message"
+                                class="absolute left-2 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Message*</label>
+                        </div>
+                        <button type="submit" id="submitBtn"
+                            class="bg-gray-800 text-white px-8 py-2 rounded-full text-xl transform translate-z-2 hover:bg-yellow-500 hover:translate-z-1 transition duration-300 mx-auto block">
+                            <span id="submitText">Submit</span>
+                            <div id="loader" class="hidden">
+                                <div
+                                    class="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin">
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script>
+                        async function handleSubmit(event) {
+                            event.preventDefault();
+
+                            // Get form elements
+                            const form = document.getElementById('contactForm1');
+                            const submitBtn = document.getElementById('submitBtn');
+                            const submitText = document.getElementById('submitText');
+                            const loader = document.getElementById('loader');
+
+                            if (!submitBtn || !submitText || !loader) {
+                                console.error('Required form elements not found');
+                                return;
+                            }
+
+                            // Show loading state
+                            submitText.classList.add('hidden');
+                            loader.classList.remove('hidden');
+                            submitBtn.disabled = true;
+
+                            try {
+                                const formData = new FormData(form);
+                                const response = await fetch('php/contact.php', {
+                                    method: 'POST',
+                                    body: formData
+                                });
+
+                                if (!response.ok) {
+                                    throw new Error(`HTTP error! status: ${response.status}`);
+                                }
+
+                                const data = await response.json();
+
+                                if (data.success) {
+                                    await Swal.fire({
+                                        title: 'Success!',
+                                        text: 'Your message has been sent successfully.',
+                                        icon: 'success',
+                                        confirmButtonColor: '#ffbd59'
+                                    });
+                                    form.reset();
+                                } else {
+                                    throw new Error(data.message || 'Something went wrong');
+                                }
+                            } catch (error) {
+                                console.error('Form submission error:', error);
+                                await Swal.fire({
+                                    title: 'Error!',
+                                    text: error.message || 'Failed to send message. Please try again.',
+                                    icon: 'error',
+                                    confirmButtonColor: '#ffbd59'
+                                });
+                            } finally {
+                                // Reset button state
+                                submitText.classList.remove('hidden');
+                                loader.classList.add('hidden');
+                                submitBtn.disabled = false;
+                            }
+                        }
+                    </script>
+
+                </div>
+                <div class="flex lg:w-[40%] w-[100%] bg-gray-800 rounded-lg flex items-center justify-between">
+
+                    <div class="flex flex-col items-center justify-around w-full h-full p-6">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.929625837126!2d77.48737217484029!3d12.912244587397717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fecb7b5572b%3A0x406b2722437c3d4!2sStavat%20artventure!5e0!3m2!1sen!2sin!4v1743941318769!5m2!1sen!2sin"
+                            class="w-full h-48 rounded-lg mb-4" allowfullscreen="" loading="lazy">
+                        </iframe>
+                        <a href="https://maps.app.goo.gl/YkiF97WXXn7xPpxdA" target="_blank"
+                            class="flex items-center justify-center bg-white text-gray-800 px-6 py-2 rounded-full text-2xl w-full transition duration-300 mb-4">
+                            Get Directions
+                            <img src="images/icons8-navigation-arrow-50.png" class="w-6 h-6 ml-5" />
+                        </a>
+                        <div class="text-gray-800">
+                            <h3 class="font-bold text-2xl mb-2 text-white text-center">Opening Hours</h3>
+                            <p class="text-white text-lg text-center">Monday - Sunday</p>
+                            <p class="text-white text-lg text-center">9:00 AM - 7:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-[#1E1E1E] flex flex-col" id="footer" itemscope itemtype="http://schema.org/Organization">
+        <div
+            class="container mx-auto mt-5 w-[90%] lg:w-[80%] flex flex-col md:flex-row justify-between py-2 space-y-8 lg:space-y-0">
+            <!-- Logo and Social Section -->
+            <div class="w-full md:w-1/3 flex flex-col items-center md:items-start">
+                <img src="images/savat_logo_light.jpeg" itemprop="logo" class="w-[200px] lg:w-[250px] mb-4">
+                <h2 itemprop="slogan"
+                    class="text-xl lg:text-2xl font-bold text-white mt-2 text-center lg:text-left px-4 lg:px-0">
+                    Where Art Meets Technology
+                </h2>
+
+                <div class="flex space-x-6 mt-6 justify-center w-full">
+                    <a href="https://www.instagram.com/digital_3d_wall_prints?igsh=cXB0ZHMxb2J2MnFu" itemprop="sameAs"
+                        class="bg-gray-300 p-2 rounded-full" aria-label="Follow us on Instagram">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.248 2.242 1.31 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.31 3.608-.975.975-2.242 1.248-3.608 1.31-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.31-.975-.975-1.248-2.242-1.31-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.334-2.633 1.31-3.608.975-.975 2.242-1.248 3.608-1.31 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.281.058-2.418.27-3.29 1.142-.872.872-1.084 2.009-1.142 3.29-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.281.27 2.418 1.142 3.29.872.872 2.009 1.084 3.29 1.142 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.281-.058 2.418-.27 3.29-1.142.872-.872 1.084-2.009 1.142-3.29.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.281-.27-2.418-1.142-3.29-.872-.872-2.009-1.084-3.29-1.142-1.28-.058-1.688-.072-4.947-.072zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a3.999 3.999 0 110-7.998 3.999 3.999 0 010 7.998zm6.406-11.845a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/16BhpJNBvy/" itemprop="sameAs"
+                        class="bg-gray-300 p-2 rounded-full" aria-label="Follow us on Facebook">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/stavat/" itemprop="sameAs"
+                        class="bg-gray-300 p-2 rounded-full" aria-label="Follow us on LinkedIn">
+                        <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Companies Section -->
+            <nav class="w-full md:w-1/3 flex flex-col items-center" aria-label="Company Navigation">
+                <div class="flex flex-col">
+                    <h2 class="text-white text-xl font-bold mb-4 text-center lg:text-left">Quick Links</h2>
+                    <a href="/services.html"
+                        class="text-gray-300 hover:text-white mb-2 cursor-pointer text-center lg:text-left">Services</a>
+                    <a href="/about.html"
+                        class="text-gray-300 hover:text-white mb-2 cursor-pointer text-center lg:text-left">about us</a>
+                    <a href="/contact.html"
+                        class="text-gray-300 hover:text-white cursor-pointer text-center lg:text-left">Contact Us</a>
+                </div>
+            </nav>
+
+            <!-- Contact Section -->
+            <div class="w-full md:w-1/3 flex flex-col items-center">
+                <div class="flex flex-col" itemscope itemtype="http://schema.org/ContactPoint">
+                    <h2 class="text-white text-xl font-bold mb-4 text-center lg:text-left">Contact Us</h2>
+                    <p class="text-gray-300 mb-2 underline text-center lg:text-left">
+                        Phone: <a href="tel:+916360619869" itemprop="telephone">+91 6360619869</a> /
+                        <a href="tel:+916364212236" itemprop="telephone">+91 6364212236</a>
+                    </p>
+                    <p class="text-gray-300 mb-4 underline text-center lg:text-left">
+                        Email: <a href="mailto:support@stavat.in" itemprop="email">support@stavat.in</a>
+                    </p>
+                    <h2 class="text-white text-xl font-bold mb-4 text-center lg:text-left">Address</h2>
+                    <p class="text-gray-300 text-center lg:text-left" itemprop="address" itemscope
+                        itemtype="http://schema.org/PostalAddress">
+                        <span itemprop="name">Stavat Artventure</span>
+                        <span itemprop="addressLocality">Bengaluru</span>,
+                        <span itemprop="addressRegion">Karnataka</span>,
+                        <span itemprop="postalCode">560060</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="w-full flex justify-around items-center bg-[#ffbd59] h-[6vh]">
+        <h4 class="text-[#1E1E1E] text-sm">©2025 stavat artventure all rights reserved</h4>
+        <nav class="flex items-center space-x-4 text-sm hidden lg:flex" aria-label="Footer Navigation">
+            <a href="#" title="Terms of Service - Spark Solutions">Terms of Service</a>
+            <a href="#" title="Privacy Policy - Spark Solutions">Privacy Policy</a>
+            <a href="#" title="Cookie Policy - Spark Solutions">Cookies</a>
+        </nav>
+    </footer>
+</body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    AOS.init({
+        offset: 120,
+
+    });
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const preloader = document.getElementById('preloader');
+        const mediaElements = [...document.images, ...document.querySelectorAll('video')];
+        let loadedCount = 0;
+
+        if (mediaElements.length === 0) {
+            hidePreloader();
+        }
+
+        mediaElements.forEach(el => {
+            if (el.tagName === 'IMG') {
+                if (el.complete) {
+                    checkLoaded();
+                } else {
+                    el.addEventListener('load', checkLoaded);
+                    el.addEventListener('error', checkLoaded);
+                }
+            } else if (el.tagName === 'VIDEO') {
+                if (el.readyState >= 3) {
+                    checkLoaded();
+                } else {
+                    el.addEventListener('loadeddata', checkLoaded);
+                    el.addEventListener('error', checkLoaded);
+                }
+            }
+        });
+
+        function checkLoaded() {
+            loadedCount++;
+            if (loadedCount === mediaElements.length) {
+                hidePreloader();
+            }
+        }
+
+        function hidePreloader() {
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500); // sync with CSS transition
+        }
+    });
+
+
+    function toggleMenu(button) {
+        const menu = document.getElementById('menu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        menu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+
+        // Animation for menu opening/closing
+        if (!menu.classList.contains('hidden')) {
+            menu.style.opacity = '1';
+            menu.style.transform = 'scale(1)';
+        } else {
+            menu.style.opacity = '0';
+            menu.style.transform = 'scale(0.95)';
+        }
+
+        // Rotate button animation
+        button.classList.toggle('rotate-180');
+    }
+
+</script>
+
+</html>
